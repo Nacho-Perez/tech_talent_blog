@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Últimas noticias del mundo del deporte</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered">
+  <thead class="thead-dark">
     <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Input blog</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Contenido</th>
+      <th>Creado</th>
+      <th>Modificado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +20,11 @@
         <td><%= post.title %></td>
         <td><%= post.author %></td>
         <td><%= post.input_blog %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.created_at %></td>
+        <td><%= post.updated_at %></td>
+        <td><%= link_to 'Mostrar', post %></td>
+        <td><%= link_to 'Editar', edit_post_path(post) %></td>
+        <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: '¿Está seguro que desea eliminar?' } %></td>
       </tr>
     <% end %>
   </tbody>
