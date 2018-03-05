@@ -4,12 +4,18 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order(updated_at: :desc)
+    @category = params[:category]
+    if @category.blank?
+      @posts = Post.all.order(updated_at: :desc)
+    else
+      @posts = Post.where(category: @category).order(updated_at: :desc)
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /posts/new
@@ -69,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :author, :input_blog)
+      params.require(:post).permit(:title, :author, :input_blog, :category)
     end
 end

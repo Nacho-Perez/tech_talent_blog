@@ -12,19 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :comment_author %>
+    <%= form.text_field :author, id: :comment_author, placeholder: "Escrito por ..." %>
   </div>
 
   <div class="field">
-    <%= form.label :input_comment %>
-    <%= form.text_field :input_comment, id: :comment_input_comment %>
+    <%= form.text_field :input_comment, id: :comment_input_comment, placeholder: "Aquí tu comentario", :size => 75 %>
   </div>
 
   <div class="field">
-    <%= form.label :post_id %>
-    <%= form.text_field :post_id, id: :comment_post_id %>
+    <%= form.hidden_field :post_id, id: :comment_post_id, value: @post.id %>
   </div>
+
+  <br>
 
   <div class="actions">
     <%= form.submit %>

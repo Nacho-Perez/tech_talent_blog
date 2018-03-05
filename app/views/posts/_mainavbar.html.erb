@@ -1,16 +1,42 @@
-<div class="container">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <ul class="nav navbar-nav bg-inverse p-4">
-          <li><a href="#">Perfil</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Sobre el autor</a></li>
-          <li><a href="#">Cerrar sesión</a></li>
-        </ul>
-  </div>  
-  <nav class="navbar">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <h1 class="text-success font-weight-bold font-italic d-inline-block mx-auto">iSPORTS</h1>
-  </nav>
-</div>
+<nav class="navbar navbar-light bg-light"> 
+
+  <div class="row width_total">
+    <div class="col-md-5">  
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>  
+
+    <%= link_to 'iSPORTS', root_path, class: "h1 text-dark font-weight-bold col-md-2" %> 
+
+    <div class="col-md-5">
+      <div class="float-right">
+        <%= link_to image_tag("logo_youtube.png", class: "social_icons", alt: "Youtube"), "https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw", target: "_blank" %>  
+        <%= link_to image_tag("logo_facebook.png", class: "social_icons", alt: "Facebook"), "https://www.facebook.com/NoticiasDeportivasOficial/?hc_ref=ARRER3MIU9ZgZYyi6AwMzlHwlAWp49YynQxqGcll-SmVpTe3dHlWyJ4QqwZSx3LmrJg", target: "_blank" %>
+        <%= link_to image_tag("logo_twitter.png", class: "social_icons", alt: "Twitter"), "https://twitter.com/notideportespn?lang=es", target: "_blank" %>
+        <%= link_to image_tag("logo_instagram.png", class: "social_icons", alt: "Instagram"), "https://www.instagram.com/deportesentotal/", target: "_blank" %>    
+        <%= link_to image_tag("logo_google_plus.png", class: "social_icons", alt: "Google+"), "https://plus.google.com/110273731699649425837", target: "_blank" %>
+        <%= link_to image_tag("logo_pinterest.png", class: "social_icons", alt: "Pinterest"), "https://www.pinterest.es/explore/noticias-deportivas-de-futbol/?lp=true", target: "_blank" %>
+        <%= image_tag("search.png", class: "social_icons", alt: "Buscar") %>       
+      </div>  
+    </div>
+  </div>    
+
+  <div class="collapse dropdown-menu" id="navbarMain">
+    <ul class="navbar-nav mr-auto">
+      <li class="dropdown-item">
+        <a class="nav-link" href="#">Perfil<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="dropdown-item">
+        <a class="nav-link" href="#">Contacto</a>
+      </li>
+      <li class="dropdown-item">
+        <a class="nav-link" href="#">A cerca del autor</a>
+      </li>
+      <li class="dropdown-item">
+        <a class="nav-link disabled" href="#">Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>

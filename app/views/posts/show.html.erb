@@ -1,19 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="container-fluid">
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+  <div class="card">
 
-<p>
-  <strong>Input blog:</strong>
-  <%= @post.input_blog %>
-</p>
+    <h2 class="card-title"><%= @post.title %></h2>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+    <div class="row">
+        
+      <%= image_tag("#{@post.id}.jpg", class: "col-md-5 card-img", alt: @post.title, height: '250') %>
+      <div class="col-md-7 card-body">
+
+        <p class="card-text text-justify"><%= @post.input_blog %></p>     
+        <div class="bottom-align-text-card">    
+          <p class="text-right font-italic p_create"><small class="text-muted">
+            <% if @post.created_at == @post.updated_at %>
+              Creado por <%= @post.author %> | <%= @post.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+            <% else %>
+              Modificado por <%= @post.author %> | <%= @post.updated_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+            <% end %>
+          </small></p>
+        </div>  
+
+      </div>  
+
+    </div>
+
+  </div>  
+
+  <br>
+
+  <% if @post.category == 'futbol' %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-success" %></p>
+  <% elsif @post.category == 'baloncesto' %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-danger" %></p>  
+  <% elsif @post.category == 'tenis' %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-warning" %></p>
+  <% elsif @post.category == 'motor' %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-secondary" %></p>  
+  <% elsif @post.category == 'otros deportes' %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %></p> 
+  <% else %>
+    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-dark" %></p>
+  <% end %>
+
+  <strong>COMENTARIOS</strong> <br>
+  <div class="container">
+    <% @post.comments.each do |comment| %>
+      <div class="row">
+        <p class="text-success col-6 p_create">
+          <strong><%= comment.author %></strong> comentó ...
+        </p>  
+        <p class="text-right font-italic col-6 p_create"><small class="text-muted">
+          <%= comment.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+        </small></p>
+      </div>  
+      <p>
+        "<%= comment.input_comment %>"
+      </p>
+    <% end %>
+  </div>  
+
+  <strong>Añade tu comentario:</strong>
+  <div id="comments">
+    <%= render 'comments/form', comment: @comment%>
+  </div>
+
+  <br>
+
+  <p><%= link_to 'Inicio', posts_path, class: "btn btn-dark"  %></p>
+
+</div>

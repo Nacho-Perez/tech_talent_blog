@@ -14,14 +14,45 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-.navbar-brand {
-    position: absolute;
+.width_total {
     width: 100%;
-    left: 0;
-    text-align: center;
-    margin: 0 auto;
 }
 
-.navbar-toggle {
-    z-index: 3;
+.social_icons {
+    margin: 10px;
+}
+
+.categories_navbar {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.p_create {
+    //Texto <p> a misma altura que <button>
+    margin-bottom: 0px;
+    padding-top: 8px;
+}
+
+.bottom-align-text {
+    //Para ajustar el texto abajo a la derecha
+    position: absolute;
+    bottom: 0;
+    //right: 0;
+    width: 97%;
+}
+
+.bottom-align-text-card {
+    //Para ajustar el texto abajo a la derecha
+    position: absolute;
+    bottom: 0;
+    //right: 0;
+    width: 90%;
+}
+
+.title-option {
+    width: 90px;
+}
+
+.input-option {
+    width: 400px;
 }

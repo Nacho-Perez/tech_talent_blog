@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order(updated_at: :desc)
   end
 
   # GET /comments/1
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to post_path(id: @comment.post_id), notice: 'El comentario fue creado con éxito.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

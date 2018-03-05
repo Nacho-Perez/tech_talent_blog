@@ -1,35 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Últimas noticias del mundo del deporte</h1>
+<% if @category.blank? %>
+  <h1>Últimas noticias del mundo del deporte</h1>
+<% elsif @category == "futbol"%>  
+  <h1>Últimas noticias del mundo del fútbol</h1>  
+<% elsif @category == "otros deportes" %>
+  <h1>Últimas noticias de <%= @category %></h1>
+<% else %>
+  <h1>Últimas noticias del mundo del <%= @category %></h1>
+<% end %>
 
-<table class="table table-striped table-hover table-bordered">
-  <thead class="thead-dark">
-    <tr>
-      <th>Título</th>
-      <th>Autor</th>
-      <th>Contenido</th>
-      <th>Creado</th>
-      <th>Modificado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @posts.each_with_index do |post, ind| %>
+  <div class="row">
+      
+    <%= image_tag("#{post.id}.jpg", class: "col-md-5", alt: post.title, height: '250') if ind.even? %>
+    <div class="col-md-7">
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.author %></td>
-        <td><%= post.input_blog %></td>
-        <td><%= post.created_at %></td>
-        <td><%= post.updated_at %></td>
-        <td><%= link_to 'Mostrar', post %></td>
-        <td><%= link_to 'Editar', edit_post_path(post) %></td>
-        <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: '¿Está seguro que desea eliminar?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <p class="text-justify"><%= post.input_blog %></p>     
+      <div class="row bottom-align-text">
 
-<br>
+        <button type="button" class="col-3 btn btn-link"><%= link_to 'Ver comentarios', post %></button>       
+        <p class="col-9 text-right font-italic p_create"><small class="text-muted">
+          <% if post.created_at == post.updated_at %>
+            Creado por <%= post.author %> | <%= post.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+          <% else %>
+            Modificado por <%= post.author %> | <%= post.updated_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+          <% end %>
+        </small></p>
 
-<%= link_to 'New Post', new_post_path %>
+      </div>  
+
+    </div> 
+    <%= image_tag("#{post.id}.jpg", class: "col-md-5", alt: post.title, height: '250') if ind.odd? %>
+
+  </div>
+  <br>
+<% end %>
+
+<!-- <a class="btn btn-success" <%= link_to 'Nuevo Post', new_post_path %></a> -->
+<% if @category == 'futbol' %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-success" %> 
+<% elsif @category == 'baloncesto' %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-danger" %> 
+<% elsif @category == 'tenis' %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-warning" %> 
+<% elsif @category == 'motor' %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-secondary" %> 
+<% elsif @category == 'otros deportes' %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-primary" %> 
+<% else %>
+  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-dark" %>   
+<% end %>
+
+<p></p>

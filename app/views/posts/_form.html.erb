@@ -12,20 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.label "Título", class: "title-option" %>
+    <%= form.text_field :title, id: :post_title, class: "input-option" %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :post_author %>
+    <%= form.label "Autor", class: "title-option" %>
+    <%= form.text_field :author, id: :post_author, class: "input-option" %>
   </div>
 
   <div class="field">
-    <%= form.label :input_blog %>
-    <%= form.text_area :input_blog, id: :post_input_blog %>
+    <%= form.label "Categoría", class: "title-option" %>
+    <%= form.select :category, [["Fútbol", "futbol"], ["Baloncesto", "baloncesto"], ["Tenis", "tenis"], ["Motor", "motor"], ["Otros deportes", "otros deportes"]] %>
   </div>
 
+  <div class="field">
+    <%= form.label "Contenido", class: "title-option" %>
+    <%= form.text_area :input_blog, id: :post_input_blog, size: "100x6" %>
+  </div>
+
+  <br>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
