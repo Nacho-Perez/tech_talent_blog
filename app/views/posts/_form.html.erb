@@ -34,6 +34,18 @@
   <br>
   
   <div class="actions">
-    <%= form.submit %>
+    <% if @post.category == 'futbol' %>
+      <%= form.submit "Crear post", class: "btn btn-success" %>
+    <% elsif @post.category == 'baloncesto' %>
+      <%= form.submit "Crear post", class: "btn btn-danger" %> 
+    <% elsif @post.category == 'tenis' %>
+      <%= form.submit "Crear post", class: "btn btn-warning" %>
+    <% elsif @post.category == 'motor' %>
+      <%= form.submit "Crear post", class: "btn btn-secondary" %> 
+    <% elsif @post.category == 'otros deportes' %>
+      <%= form.submit "Crear post", class: "btn btn-primary" %>
+    <% else %>
+      <%= form.submit "Crear post", class: "btn btn-dark" %>
+    <% end %>  
   </div>
 <% end %>

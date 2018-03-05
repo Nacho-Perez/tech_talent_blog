@@ -11,21 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.text_field :author, id: :comment_author, placeholder: "Escrito por ..." %>
+  <div class="form-group">
+    <%= form.text_field :author, id: :comment_author, placeholder: "Escrito por ...", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.text_field :input_comment, id: :comment_input_comment, placeholder: "Aquí tu comentario", :size => 75 %>
+  <div class="form-group">
+    <%= form.text_field :input_comment, id: :comment_input_comment, placeholder: "Aquí tu comentario", class: "form-control" %> <!-- :size => 75 -->
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.hidden_field :post_id, id: :comment_post_id, value: @post.id %>
   </div>
 
-  <br>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <% if @post.category == 'futbol' %>
+      <%= form.submit "Crear comentario", class: "btn btn-success" %>
+    <% elsif @post.category == 'baloncesto' %>
+      <%= form.submit "Crear comentario", class: "btn btn-danger" %>  
+    <% elsif @post.category == 'tenis' %>
+      <%= form.submit "Crear comentario", class: "btn btn-warning" %>
+    <% elsif @post.category == 'motor' %>
+      <%= form.submit "Crear comentario", class: "btn btn-secondary" %>  
+    <% elsif @post.category == 'otros deportes' %>
+      <%= form.submit "Crear comentario", class: "btn btn-primary" %>
+    <% else %>
+      <%= form.submit "Crear comentario", class: "btn btn-dark" %>
+    <% end %>  
   </div>
 <% end %>
