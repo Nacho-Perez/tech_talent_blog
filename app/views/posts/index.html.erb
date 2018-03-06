@@ -22,9 +22,9 @@
         <button type="button" class="col-3 btn btn-link"><%= link_to 'Ver comentarios', post %></button>       
         <p class="col-9 text-right font-italic p_create"><small class="text-muted">
           <% if post.created_at == post.updated_at %>
-            Creado por <%= post.author %> | <%= post.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+            Creado por <%= post.user.username %> | <%= post.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
           <% else %>
-            Modificado por <%= post.author %> | <%= post.updated_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+            Modificado por <%= post.user.username %> | <%= post.updated_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
           <% end %>
         </small></p>
 

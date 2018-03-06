@@ -17,16 +17,37 @@
         <%= link_to image_tag("logo_instagram.png", class: "social_icons", alt: "Instagram"), "https://www.instagram.com/deportesentotal/", target: "_blank" %>    
         <%= link_to image_tag("logo_google_plus.png", class: "social_icons", alt: "Google+"), "https://plus.google.com/110273731699649425837", target: "_blank" %>
         <%= link_to image_tag("logo_pinterest.png", class: "social_icons", alt: "Pinterest"), "https://www.pinterest.es/explore/noticias-deportivas-de-futbol/?lp=true", target: "_blank" %>
-        <%= image_tag("search.png", class: "social_icons", alt: "Buscar") %>       
+        <%= image_tag("search.png", class: "social_icons", alt: "Buscar") %>      
+
+        
+         
       </div>  
     </div>
   </div>    
 
   <div class="collapse dropdown-menu" id="navbarMain">
     <ul class="navbar-nav mr-auto">
-      <li class="dropdown-item">
-        <a class="nav-link" href="#">Perfil<span class="sr-only">(current)</span></a>
-      </li>
+
+      <% if user_signed_in? %> 
+        <div class="nav-link">
+          <li class="dropdown-item">
+            <%= link_to "Editar perfil", edit_user_registration_path %>
+            <%= image_tag current_user.avatar.url, size: 50 if current_user.avatar.url %>
+          </li>
+        </div>  
+      <% else %>
+        <div class="nav-link">
+          <li class="dropdown-item">
+            <%= link_to "Iniciar sesión", new_user_session_path %> <br>
+          </li>
+        </div>
+        <div class="nav-link">  
+          <li class="dropdown-item">
+            <%= link_to "Registrarse", new_user_registration_path %>  
+          </li>             
+        </div>
+      <% end %>
+
       <li class="dropdown-item">
         <a class="nav-link" href="#">Contacto</a>
       </li>
@@ -34,7 +55,11 @@
         <a class="nav-link" href="#">A cerca del autor</a>
       </li>
       <li class="dropdown-item">
-        <a class="nav-link disabled" href="#">Cerrar sesión</a>
+        <div class="nav-link">
+          <% if user_signed_in? %>
+            <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-danger" %> <!-- class: "nav-link disabled" -->
+          <% end %>
+        </div>
       </li>
     </ul>
   </div>

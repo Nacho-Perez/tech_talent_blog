@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   # GET /posts
   # GET /posts.json
   def index
@@ -16,6 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comment = Comment.new
+    @category = @post.category
   end
 
   # GET /posts/new
@@ -25,6 +28,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @category = @post.category  
   end
 
   # POST /posts
@@ -75,6 +79,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :author, :input_blog, :category)
+      params.require(:post).permit(:title, :author, :input_blog, :category, :user_id)
     end
 end

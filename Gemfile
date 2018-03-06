@@ -57,3 +57,11 @@ gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap', '~> 4.0.0'
 #JQuery para Bootstrap JS v4.0
 gem 'jquery-rails'
+#Devise
+gem 'devise'
+#Bcrypt error solved
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+#Gravatar image
+gem 'gravatarify', '~> 3.0.0'
+#Carrierwave image
+gem 'carrierwave'
