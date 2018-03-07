@@ -1,0 +1,44 @@
+<br>
+<% unless notice.blank? %>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<h1>Todas los posts escritos por <%= @user.username %></h1>
+
+<% @posts_by_user.each_with_index do |post, ind| %>
+  <div class="row">
+      
+    <%= image_tag(post.picture.url, class: "col-md-5", alt: post.title, height: '250') if ind.even? && post.picture.url %>
+    <div class="col-md-7">
+
+      <p class="text-justify"><%= post.input_blog.html_safe %></p>     
+      <div class="row bottom-align-text">
+
+        <button type="button" class="col-3 btn btn-link"><%= link_to 'Ver comentarios', post %></button>       
+        <p class="col-9 text-right font-italic p_create"><small class="text-muted">
+          <% if post.created_at == post.updated_at %>
+            Creado por <%= post.user.username %> | <%= post.created_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+          <% else %>
+            Modificado por <%= post.user.username %> | <%= post.updated_at.strftime("%-d-%m-%Y a las %k:%Mh") %>
+          <% end %>
+        </small></p>
+
+      </div>  
+
+    </div> 
+    <%= image_tag(post.picture.url, class: "col-md-5", alt: post.title, height: '250') if ind.odd? && post.picture.url %>
+
+  </div>
+  <br>
+<% end %>  
+
+<div class="float-right">
+  <%= paginate @posts_by_user, window: 1 %>
+</div>  
+
+<p></p>

@@ -65,3 +65,5 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'gravatarify', '~> 3.0.0'
 #Carrierwave image
 gem 'carrierwave'
+#Kaminari (pagination)
+gem 'kaminari'

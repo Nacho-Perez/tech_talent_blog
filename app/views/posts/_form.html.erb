@@ -1,7 +1,7 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(post.errors.count, "error") %> evitó que este post sea guardado:</h2>
 
       <ul>
       <% post.errors.full_messages.each do |message| %>
@@ -28,6 +28,11 @@
   <div class="field">
     <%= form.label "Contenido", class: "title-option" %>
     <%= form.text_area :input_blog, id: :post_input_blog, size: "100x6" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Imagen del post:", class: "title-option" %>
+    <%= form.file_field :picture %>
   </div>
 
   <br>

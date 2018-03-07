@@ -54,13 +54,13 @@
       <li class="dropdown-item">
         <a class="nav-link" href="#">A cerca del autor</a>
       </li>
-      <li class="dropdown-item">
-        <div class="nav-link">
-          <% if user_signed_in? %>
+      <% if user_signed_in? %> 
+        <li class="dropdown-item">
+          <div class="nav-link">
             <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-danger" %> <!-- class: "nav-link disabled" -->
-          <% end %>
-        </div>
-      </li>
+          </div>
+        </li>
+      <% end %>  
     </ul>
   </div>
 
