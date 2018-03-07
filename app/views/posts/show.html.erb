@@ -38,20 +38,28 @@
 
   <br>
 
-  <% if @post.category == 'futbol' %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-success" %></p>
-  <% elsif @post.category == 'baloncesto' %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-danger" %></p>  
-  <% elsif @post.category == 'tenis' %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-warning" %></p>
-  <% elsif @post.category == 'motor' %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-secondary" %></p>  
-  <% elsif @post.category == 'otros deportes' %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %></p> 
-  <% else %>
-    <p><%= link_to 'Editar', edit_post_path(@post), class: "btn btn-dark" %></p>
+  <% if current_user.id == @post.user_id %>
+    <div class="float-right">
+      <% if @post.category == 'futbol' %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-success" %>
+      <% elsif @post.category == 'baloncesto' %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-danger" %>  
+      <% elsif @post.category == 'tenis' %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-warning" %>
+      <% elsif @post.category == 'motor' %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-secondary" %>  
+      <% elsif @post.category == 'otros deportes' %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %> 
+      <% else %>
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-dark" %>
+      <% end %>
+
+      <%= link_to 'Eliminar', @post, method: :delete, data: { confirm: '¿Estás segur@?' }, class: "btn btn-danger" %>
+    </div>  
   <% end %>
 
+  <br>
+  
   <strong>COMENTARIOS</strong> <br>
   <div class="container">
     <% @post.comments.each do |comment| %>
