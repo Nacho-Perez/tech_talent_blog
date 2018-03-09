@@ -1,12 +1,20 @@
 <div class="card">
 
+  <% unless devise_error_messages!.blank? %>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <%= devise_error_messages! %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+
   <div class="row">  
 
     <div class="col-6">
       <h3 class="card-title">Editar usuario</h3>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
 
         <div class="field">
           <%= f.label :email %><br />

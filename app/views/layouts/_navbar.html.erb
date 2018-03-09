@@ -1,16 +1,4 @@
-<% if @category == 'futbol' %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success rounded">
-<% elsif @category == 'baloncesto' %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger rounded">
-<% elsif @category == 'tenis' %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning rounded">
-<% elsif @category == 'motor' %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary rounded">
-<% elsif @category == 'otros deportes' %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
-<% else %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-<%= @category ? @category.split.join : "dark" %> rounded">
 
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarCategories">
         <ul class="navbar-nav">
@@ -31,4 +19,5 @@
             </li>
         </ul>
     </div>
+
 </nav>

@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %> <!-- unless post.user -->
   </div>
 
   <div class="field">
@@ -38,18 +38,6 @@
   <br>
   
   <div class="actions">
-    <% if @post.category == 'futbol' %>
-      <%= form.submit "Crear post", class: "btn btn-success" %>
-    <% elsif @post.category == 'baloncesto' %>
-      <%= form.submit "Crear post", class: "btn btn-danger" %> 
-    <% elsif @post.category == 'tenis' %>
-      <%= form.submit "Crear post", class: "btn btn-warning" %>
-    <% elsif @post.category == 'motor' %>
-      <%= form.submit "Crear post", class: "btn btn-secondary" %> 
-    <% elsif @post.category == 'otros deportes' %>
-      <%= form.submit "Crear post", class: "btn btn-primary" %>
-    <% else %>
-      <%= form.submit "Crear post", class: "btn btn-dark" %>
-    <% end %>  
+    <%= form.submit submit_text, class: "btn btn-#{@category ? @category.split.join : "dark"}" %>   
   </div>
 <% end %>

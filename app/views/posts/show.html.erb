@@ -38,25 +38,14 @@
 
   <br>
 
-  <% if current_user.id == @post.user_id %>
-    <div class="float-right">
-      <% if @post.category == 'futbol' %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-success" %>
-      <% elsif @post.category == 'baloncesto' %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-danger" %>  
-      <% elsif @post.category == 'tenis' %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-warning" %>
-      <% elsif @post.category == 'motor' %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-secondary" %>  
-      <% elsif @post.category == 'otros deportes' %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %> 
-      <% else %>
-        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-dark" %>
-      <% end %>
-
-      <%= link_to 'Eliminar', @post, method: :delete, data: { confirm: '¿Estás segur@?' }, class: "btn btn-danger" %>
-    </div>  
-  <% end %>
+  <% if user_signed_in? %> 
+    <% if current_user.id  == @post.user_id %>
+      <div class="float-right">
+        <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-#{@post.category.split.join}" %>
+        <%= link_to 'Eliminar', @post, method: :delete, data: { confirm: '¿Está segur@ que desea eliminar?' }, class: "btn btn-danger" %>
+      </div>  
+    <% end %>
+  <% end %>  
 
   <br>
   
@@ -64,7 +53,7 @@
   <div class="container">
     <% @post.comments.each do |comment| %>
       <div class="row">
-        <p class="text-success col-6 p_create">
+        <p class="txt-<%= @post.category.split.join %> col-6 p_create">
           <%= image_tag comment.user.avatar.url, size: 30 if comment.user.avatar.url %>
           <strong><%= comment.user.username %></strong> comentó ...
         </p>  

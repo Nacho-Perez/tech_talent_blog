@@ -1,15 +1,15 @@
 <nav class="navbar navbar-light bg-light"> 
 
   <div class="row width_total">
-    <div class="col-md-5">  
+    <div class="col-md-4">  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>  
 
-    <%= link_to 'iSPORTS', root_path, class: "h1 text-dark font-weight-bold col-md-2" %> 
+    <%= link_to 'iSPORTS', root_path, class: "h1 text-dark font-weight-bold col-md-4" %> 
 
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="float-right">
         <%= link_to image_tag("logo_youtube.png", class: "social_icons", alt: "Youtube"), "https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw", target: "_blank" %>  
         <%= link_to image_tag("logo_facebook.png", class: "social_icons", alt: "Facebook"), "https://www.facebook.com/NoticiasDeportivasOficial/?hc_ref=ARRER3MIU9ZgZYyi6AwMzlHwlAWp49YynQxqGcll-SmVpTe3dHlWyJ4QqwZSx3LmrJg", target: "_blank" %>
@@ -17,10 +17,7 @@
         <%= link_to image_tag("logo_instagram.png", class: "social_icons", alt: "Instagram"), "https://www.instagram.com/deportesentotal/", target: "_blank" %>    
         <%= link_to image_tag("logo_google_plus.png", class: "social_icons", alt: "Google+"), "https://plus.google.com/110273731699649425837", target: "_blank" %>
         <%= link_to image_tag("logo_pinterest.png", class: "social_icons", alt: "Pinterest"), "https://www.pinterest.es/explore/noticias-deportivas-de-futbol/?lp=true", target: "_blank" %>
-        <%= image_tag("search.png", class: "social_icons", alt: "Buscar") %>      
-
-        
-         
+        <%= image_tag("search.png", class: "social_icons", alt: "Buscar") %>       
       </div>  
     </div>
   </div>    
@@ -31,8 +28,13 @@
       <% if user_signed_in? %> 
         <div class="nav-link">
           <li class="dropdown-item">
+            <%= link_to 'Nuevo Post', new_post_path %> <br>
+          </li>  
+        </div>
+        <div class="nav-link">
+          <li class="dropdown-item">
             <%= link_to "Editar perfil", edit_user_registration_path %>
-            <%= image_tag current_user.avatar.url, size: 50 if current_user.avatar.url %>
+            <%= image_tag current_user.avatar.url, size: 40 if current_user.avatar.url %>
           </li>
         </div>  
       <% else %>

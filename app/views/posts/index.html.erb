@@ -47,22 +47,4 @@
 
 <div class="float-right">
   <%= paginate @posts, window: 1 %>
-</div>  
-
-<!-- <a class="btn btn-success" <%= link_to 'Nuevo Post', new_post_path %></a> -->
-<% if @category == 'futbol' %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-success" %> 
-<% elsif @category == 'baloncesto' %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-danger" %> 
-<% elsif @category == 'tenis' %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-warning" %> 
-<% elsif @category == 'motor' %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-secondary" %> 
-<% elsif @category == 'otros deportes' %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-primary" %> 
-<% else %>
-  <%= link_to 'Nuevo Post', new_post_path, class: "btn btn-dark" %>   
-<% end %>
-
-<p></p>
-
+</div>

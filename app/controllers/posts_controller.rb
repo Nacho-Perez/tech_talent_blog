@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'El post fue creado con éxito.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'El post fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -71,7 +72,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'El post fue eliminado con éxito.' }
       format.json { head :no_content }
     end
   end
@@ -85,5 +86,13 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :author, :input_blog, :category, :user_id, :picture)
+    end
+
+    #Avoid an user can edit and destroy posts from another users
+    def correct_user
+      @post = Post.find_by(id: params[:id])
+      unless current_user.id == @post.user_id
+        redirect_to @post
+      end
     end
 end

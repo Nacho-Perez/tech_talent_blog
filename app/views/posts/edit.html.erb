@@ -4,24 +4,13 @@
 
     <h1 class="card-title">Editar post</h1>
 
-    <%= render 'form', post: @post %>
+    <%= render 'form', post: @post, submit_text: "Editar post" %>
 
 </div>    
 
 <br>
-
-<% if @post.category == 'futbol' %>
-    <%= link_to 'Atrás', @post, class: "btn btn-success" %> 
-<% elsif @post.category == 'baloncesto' %>
-    <%= link_to 'Atrás', @post, class: "btn btn-danger" %>  
-<% elsif @post.category == 'tenis' %>
-    <%= link_to 'Atrás', @post, class: "btn btn-warning" %> 
-<% elsif @post.category == 'motor' %>
-    <%= link_to 'Atrás', @post, class: "btn btn-secondary" %>   
-<% elsif @post.category == 'otros deportes' %>
-    <%= link_to 'Atrás', @post, class: "btn btn-primary" %>  
-<% else %>
-    <%= link_to 'Atrás', @post, class: "btn btn-dark" %> 
-<% end %>
         
+<%= link_to 'Atrás', @post, class: "btn btn-#{@category ? @category.split.join : "dark"}" %> 
 <%= link_to 'Inicio', posts_path, class: "btn btn-dark"   %>
+
+<p></p>

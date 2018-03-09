@@ -14,6 +14,7 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "style_category";
 .width_total {
     width: 100%;
 }
@@ -55,4 +56,10 @@
 
 .input-option {
     width: 400px;
+}
+
+.h1 {
+    font-size: 4rem;
+    font-family: "Lucida Console";
+    text-align: center;
 }
